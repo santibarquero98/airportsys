@@ -7,19 +7,16 @@
         <artifactId>airportsys-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>infrastructure</artifactId>
-    <packaging>pom</packaging>
-
-    <name>infrastructure</name>
-    <description>infrastructure</description>
+    <artifactId>application</artifactId>
+    <name>application</name>
+    <description>application</description>
 
     <dependencies>
         <dependency>
             <groupId>santiagobarquero</groupId>
-            <artifactId>application</artifactId>
+            <artifactId>domain</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -27,18 +24,6 @@
             <artifactId>spring-context</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
     </dependencies>
-
-    <modules>
-        <module>rest-api</module>
-    </modules>
 
 </project>
