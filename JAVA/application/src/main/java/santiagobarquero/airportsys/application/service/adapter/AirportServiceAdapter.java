@@ -1,7 +1,7 @@
 package santiagobarquero.airportsys.application.service.adapter;
 
-import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import santiagobarquero.airportsys.application.service.AirportService;
 import santiagobarquero.airportsys.domain.entities.AirportEntity;
@@ -11,7 +11,6 @@ import santiagobarquero.airportsys.domain.model.service.CreateAirport;
 import santiagobarquero.airportsys.domain.repositories.AirportRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -21,8 +20,8 @@ public class AirportServiceAdapter implements AirportService {
     private final AirportMapper airportMapper;
 
     @Override
-    public AirportEntity findById(Long airport) {
-        return airportRepository.findById(airport).orElseThrow(EntityNotFoundException::new);
+    public Airport findById(Long id) {
+        return airportMapper.toModel(airportRepository.findById(id));
     }
 
     @Override
@@ -33,17 +32,17 @@ public class AirportServiceAdapter implements AirportService {
                 .name(createAirport.getName())
                 .build();
 
-        airportRepository.save(airport);
+        airportRepository.save(airport, Boolean.FALSE);
     }
 
     @Override
     public List<Airport> getAll() {
-        return airportMapper.toModelList(airportRepository.findAll());
+        return airportMapper.toModelList(airportRepository.findAll(Sort.unsorted()));
     }
 
     @Override
-    public Optional<AirportEntity> findByCode(String code) {
-        return airportRepository.findFirstByCode(code);
+    public Airport findByCode(String code) {
+        return airportMapper.toModel(airportRepository.findByCode(code));
     }
 
     /* PRIVATE METHODS */

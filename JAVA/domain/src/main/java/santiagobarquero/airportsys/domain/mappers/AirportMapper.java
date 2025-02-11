@@ -1,6 +1,7 @@
 package santiagobarquero.airportsys.domain.mappers;
 
 import org.mapstruct.Mapper;
+
 import santiagobarquero.airportsys.domain.entities.AirportEntity;
 import santiagobarquero.airportsys.domain.model.Airport;
 

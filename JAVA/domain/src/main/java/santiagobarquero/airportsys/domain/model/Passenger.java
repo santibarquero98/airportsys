@@ -1,12 +1,13 @@
 package santiagobarquero.airportsys.domain.model;
 
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
-import java.time.LocalDate;
 
 @Data
 @Builder
@@ -14,16 +15,25 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class Passenger implements Serializable {
 
-    private Long id;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-    private String name;
+	private Long id;
 
-    private String surname;
+	private String name;
 
-    private String nif;
+	private String surname;
 
-    private String country;
+	private String typeNif;
+	
+	private String nif;
 
-    private LocalDate birthday;
+	private String country;
+
+	private LocalDate birthday;
+
+	private List<Flight> flights;
 
 }

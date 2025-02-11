@@ -1,15 +1,17 @@
 package santiagobarquero.airportsys.domain.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.domain.Sort;
 import santiagobarquero.airportsys.domain.entities.AirportEntity;
-import santiagobarquero.airportsys.domain.model.Airport;
 
-import java.util.Optional;
+import java.util.List;
 
-@Repository
-public interface AirportRepository extends JpaRepository<AirportEntity, Long> {
+public interface AirportRepository {
 
-    Optional<AirportEntity> findFirstByCode(String code);
+    AirportEntity findById(Long id);
 
+    void save(AirportEntity airport, Boolean aFalse);
+
+    List<AirportEntity> findAll(Sort unsorted);
+
+    AirportEntity findByCode(String code);
 }

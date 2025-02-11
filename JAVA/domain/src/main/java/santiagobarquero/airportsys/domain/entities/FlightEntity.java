@@ -17,32 +17,43 @@ import java.util.List;
 @NoArgsConstructor
 public class FlightEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-    @Column(unique = true)
-    private String code;
+	@Column(unique = true)
+	private String code;
 
-    @ManyToOne
-    @JoinColumn(name = "airplane_id", nullable = false)
-    private AirplaneEntity airplane;
+	@ManyToOne
+	@JoinColumn(name = "airplane_id", nullable = false)
+	private AirplaneEntity airplane;
 
-    @ManyToOne
-    @JoinColumn(name = "origin_id", nullable = false)
-    private AirportEntity origin;
+	@ManyToOne
+	@JoinColumn(name = "origin_id", nullable = false)
+	private AirportEntity origin;
 
-    @ManyToOne
-    @JoinColumn(name = "destination_id", nullable = false)
-    private AirportEntity destination;
+	@ManyToOne
+	@JoinColumn(name = "destination_id", nullable = false)
+	private AirportEntity destination;
 
-    @Column(name = "boardingTime")
-    private LocalDateTime boardingTime;
+	@Column(name = "boardingTime")
+	private LocalDateTime boardingTime;
 
-    @Column(name = "takeOffTime")
-    private LocalDateTime takeOffTime;
+	@Column(name = "takeOffTime")
+	private LocalDateTime takeOffTime;
 
-    @ManyToMany(mappedBy = "flights", cascade = CascadeType.ALL)
-    private List<PassengerEntity> passengers;
+	@Column(name = "landedTime")
+	private LocalDateTime landedTime;
+
+	@ManyToMany(mappedBy = "flights", cascade = CascadeType.ALL)
+	private List<PassengerEntity> passengers;
+
+	@Column(name = "finalized")
+	@Builder.Default
+	private Boolean finalized = Boolean.FALSE;
+
+	@Column(name = "onFly")
+	@Builder.Default
+	private Boolean onFly = Boolean.FALSE;
 
 }

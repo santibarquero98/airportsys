@@ -1,18 +1,17 @@
 package santiagobarquero.airportsys.domain.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.domain.Sort;
 import santiagobarquero.airportsys.domain.entities.AirplaneEntity;
-import santiagobarquero.airportsys.domain.model.Airplane;
 
-import java.util.Optional;
+import java.util.List;
 
-@Repository
-public interface AirplaneRepository extends JpaRepository<AirplaneEntity, Long> {
+public interface AirplaneRepository {
 
-    @Query("select ae from AirplaneEntity ae where ae.code = :code")
-    Optional<AirplaneEntity> findFirstByCode(@Param("code") String code);
+    AirplaneEntity findById(Long airplane);
 
+    void save(AirplaneEntity build, Boolean aFalse);
+
+    List<AirplaneEntity> findAll(Sort sort);
+
+    AirplaneEntity findByCode(String airplaneCode);
 }

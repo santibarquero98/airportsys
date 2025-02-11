@@ -13,6 +13,11 @@ import java.util.List;
 @Data
 public class DataAirplane implements Serializable {
 
-    private final List<Airplane> data;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private final List<Airplane> data;
 
 }

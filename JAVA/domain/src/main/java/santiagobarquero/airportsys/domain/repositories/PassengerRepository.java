@@ -1,15 +1,20 @@
 package santiagobarquero.airportsys.domain.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import java.util.List;
+
+import org.springframework.data.domain.Sort;
+
 import santiagobarquero.airportsys.domain.entities.PassengerEntity;
-import santiagobarquero.airportsys.domain.model.Passenger;
 
-import java.util.Optional;
+public interface PassengerRepository {
 
-@Repository
-public interface PassengerRepository extends JpaRepository<PassengerEntity, Long> {
+    PassengerEntity findByNif(String nif);
 
-    Optional<PassengerEntity> findFirstByNif(String nif);
+    PassengerEntity findById(Long id);
 
+    void save(PassengerEntity passengerEntity, boolean flush);
+
+    List<PassengerEntity> findAll(Sort sort);
+
+	Boolean existsByNif(String nif);
 }

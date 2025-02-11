@@ -1,18 +1,22 @@
 package santiagobarquero.airportsys.domain.model;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-@Data
 @Builder
 @AllArgsConstructor
-public class Airport {
+@Data
+public class Airport implements Serializable {
 
-    private Long id;
-
-    private final String name;
-
-    private final String city;
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9184477744729055658L;
+	private Long id;
+	private String code;
+	private String name;
+	private String city;
 }

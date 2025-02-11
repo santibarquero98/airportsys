@@ -1,31 +1,32 @@
 package santiagobarquero.airportsys.domain.model;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
-@Data
 @Builder
 @AllArgsConstructor
-public class Flight {
+@Data
+public class Flight implements Serializable {
 
-    private Long id;
-
-    private String code;
-
-    private final Airplane airplane;
-
-    private final Airport origin;
-
-    private final Airport destination;
-
-    private final List<Passenger> passengers;
-
-    private final LocalDateTime boardingTime;
-
-    private final LocalDateTime takeOffTime;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private final String code;
+	private final Airplane airplane;
+	private final Airport origin;
+	private final Airport destination;
+	private final List<Passenger> passengers;
+	private final LocalDateTime boardingTime;
+	private final LocalDateTime takeOffTime;
+	private final LocalDateTime landedTime;
+	private final Boolean finalized;
+	private final Boolean onFly;
 
 }

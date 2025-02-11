@@ -1,21 +1,17 @@
 package santiagobarquero.airportsys.domain.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
+import java.util.List;
+
 import santiagobarquero.airportsys.domain.entities.FlightEntity;
 
-import java.util.Optional;
+public interface FlightRepository {
 
-/**
- * @author santi
- * The class only must be inyected on a FlightService interface
- */
-@Repository
-public interface FlightRepository extends JpaRepository<FlightEntity, Long> {
+	FlightEntity findFirstByCode(String susceptFlightCode);
 
-    @Query("select fe from FlightEntity fe where fe.code = :code")
-    Optional<FlightEntity> findFirstByCode(@Param("code") String flightCode);
+	FlightEntity save(FlightEntity flightEntity);
+
+	FlightEntity findById(Long nFlight);
+
+	List<FlightEntity> findAll();
 
 }

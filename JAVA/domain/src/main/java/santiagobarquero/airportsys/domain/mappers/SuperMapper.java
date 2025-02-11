@@ -2,14 +2,14 @@ package santiagobarquero.airportsys.domain.mappers;
 
 import java.util.List;
 
-public interface SuperMapper<MODEL, ENTITY> {
+public interface SuperMapper<M, E> {
 
-    abstract ENTITY toEntity(MODEL passenger);
+    abstract E toEntity(M passenger);
 
-    abstract MODEL toModel(ENTITY passengerEntity);
+    abstract M toModel(E passengerEntity);
 
-    abstract List<ENTITY> toEntityList(List<MODEL> passengerList);
+    abstract List<E> toEntityList(List<M> passengerList);
 
-    abstract List<MODEL> toModelList(List<ENTITY> passengerEntityList);
+    abstract List<M> toModelList(List<E> passengerEntityList);
 
 }
